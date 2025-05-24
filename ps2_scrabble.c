@@ -10,7 +10,7 @@ void declareWinner(int scores[], int maxScore, int playerNumber);
 
 int points[] = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
 
-int main (void)
+int main(void)
 {
   int playerNumber = get_int("How many players? ");
 
@@ -22,25 +22,25 @@ int main (void)
     words[i] = get_string("Player %i. Enter a word: ", i + 1);
   }
 
-  //GET SCORE
+  // GET SCORE
   int scores[playerNumber];
   for (int i = 0; i < playerNumber; i++)
   {
     scores[i] = computeScore(words[i]);
   }
-  
 
-  //PRINT SCORE
+
+  // PRINT SCORE
   for (int i = 0; i < playerNumber; i++)
   {
     printf("Player %i scores: %i\n", i + 1, scores[i]);
   }
-  
-  //DECLARE WINNER
+
+  // DECLARE WINNER
   int winningScore = findWinner(scores, playerNumber);
   declareWinner(scores, winningScore, playerNumber);
 
-  return 0;  
+  return 0;
 }
 
 // COMPUTE SCORE
@@ -48,7 +48,7 @@ int computeScore(string word)
 {
   int score = 0;
   // COMPARE WORD SCORES
-  for(int i = 0, length = strlen(word); i < length; i++)
+  for (int i = 0, length = strlen(word); i < length; i++)
   {
     if (isupper(word[i]))
     {
@@ -57,11 +57,12 @@ int computeScore(string word)
     else if (islower(word[i]))
     {
       score += points[word[i] - 'a'];
-    } else
-    {
-      score+= 0;
     }
-  } 
+    else
+    {
+      score += 0;
+    }
+  }
   return score;
 }
 
@@ -72,7 +73,7 @@ int findWinner(int scores[], int playerNumber)
 
   for (int i = 1; i < playerNumber; i++)
   {
-    if(scores[i] > maxScore)
+    if (scores[i] > maxScore)
     {
       maxScore = scores[i];
     }
@@ -80,7 +81,7 @@ int findWinner(int scores[], int playerNumber)
   return maxScore;
 }
 
-//DECLARE WINNER
+// DECLARE WINNER
 void declareWinner(int scores[], int maxScore, int playerNumber)
 {
   int winnerCount = 0;
@@ -122,7 +123,6 @@ void declareWinner(int scores[], int maxScore, int playerNumber)
           {
             printf(", ");
           }
-          
         }
         printf("Player %i", i + 1);
         mentionedWinners++;
