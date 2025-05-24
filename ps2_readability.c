@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
 
   printf("WORDCOUNT: %i\n", wordCount);
   printf("CHARACTER COUNT: %i\n", charCount);
+  printf("SENTENCE COUNT: %i\n", sentCount);
   
   
   int l;
@@ -57,6 +58,13 @@ int main(int argc, char *argv[])
   s = sentCount / wordCount;
   printf("S ratio: %i\n", s);
 
+  int index = 0.0588 * l - 0.296 * s - 15.8;
+  printf("Readability Index: %i\n", index);
+
+  if (index < -15)
+  {
+    printf("Readability Index: Before Grade 1\n");
+  }
 
 
 return 0;
