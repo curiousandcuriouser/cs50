@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include "cs50.h"
 #include <math.h>
 #include <stdio.h>
@@ -8,13 +9,16 @@ int points[] = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 
 
 int main (void)
 {
+  
   // GET WORDS
   string word1 = get_string("Player 1. Enter a word: \n");
   string word2 = get_string("Player 2. Enter a word: \n");
 
   // GET SCORE
   int score1 = computeScore(word1);
+  printf("Player 1 scores %i points\n", score1);
   int score2 = computeScore(word2);
+  printf("Player 1 scores %i points\n", score2);
 
   // DECLARE WINNER
   if (score1 > score2)
@@ -37,8 +41,18 @@ int computeScore(string word)
   // COMPARE WORD SCORES
   for(int i = 0, length = strlen(word); i < length; i++)
   {
-    score += points[word[i]];
-  }
+    if (isupper(word[i]))
+    {
+      score += points[word[i] - 'A'];
+    }
+    else if (islower(word[i]))
+    {
+      score += points[word[i] - 'a'];
+    } else
+    {
+      score+= 0;
+    }
+  } 
   return score;
 }
 
