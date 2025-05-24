@@ -12,9 +12,10 @@ int main(int argc, char *argv[])
   int charCount = 0;
   int sentCount = 0;
   int wordCount = 0;
-  bool inWord = false;  
+  bool inWord = false; 
+  bool sentBeginning = true;
 
-  // COUNT CHARACTERS IN FIRST 100 WORDS
+  // COUNT CHARACTERS & SENTENCES IN FIRST 100 WORDS
   for (int i = 0, length = strlen(textSample); i < length; i++)
   {
     if ((!isspace(textSample[i]) && (!inWord)))
@@ -30,6 +31,16 @@ int main(int argc, char *argv[])
     if (wordCount <= 100 && ((!isspace(textSample[i]))))
     {
         charCount++;
+
+        if (textSample[i] == '!' || textSample[i] == '?' || textSample[i] == '.')
+        {
+          sentCount++;
+          sentBeginning = false;
+        }
+        else if (sentBeginning == true && wordCount <=100)
+        {
+          sentCount++;
+        }
     }
   }
 
@@ -43,8 +54,8 @@ int main(int argc, char *argv[])
   l = charCount / wordCount;
   printf("L ratio: %i\n", l);
 
-  l = sentenceCount / wordCount;
-  printf("L ratio: %i\n", l);
+  s = sentCount / wordCount;
+  printf("S ratio: %i\n", s);
 
 
 
@@ -64,8 +75,8 @@ GOAL: This program evaluates readability of a text.asm
 / Prompt user to input text
 ** Evaluate text based on this formula: 
     index = 0.0588 * L - 0.296 * S - 15.8
-      L = average number of letters per 100 words
-      S = average number of sentences per 100 words
+    / L = average number of letters per 100 words
+    / S = average number of sentences per 100 words
 - Print Grade Level, from Before Grade 1 to Grade 16+
 
  // EDGE CASE: If text has less than 100 words?
@@ -73,10 +84,10 @@ GOAL: This program evaluates readability of a text.asm
 
 Idea:
 / Define word for computer
-- Define sentence for computer
+/ Define sentence for computer
 / Take sample of 100 words
-** Calculate average number of letters in sample
-- Calculate average number of sentences in sample
+/ Calculate average number of letters in sample
+/ Calculate average number of sentences in sample
 
 
 Definitions: 
