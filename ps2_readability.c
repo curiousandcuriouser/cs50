@@ -9,19 +9,37 @@ int main(int argc, char *argv[])
   // GET TEXT
   string textSample = get_string("Enter the text you want to evaluate: \n");
 
-  // DEFINE SENTENCE & WORD
-  string word = 
+  int charCount = 0;
+
+  // COUNT CHARACTERS IN STRING
+  for (int i = 0, length = strlen(textSample); i < length; i++)
+  {
+    if (textSample[i] != ' ') // if the character is a letter
+    {
+      charCount++;
+    }
+  }
+  printf("%i\n", charCount);
+  return charCount;
+
+  // C
+  
+  // Equal number of words and spaces in a sentence
+  // Ratio of spaces to characters?
+  // EDGE CASE: If text has less than 100 words?
+
   
   
   int l;
   int s;
   int grade;
 
-  // Declare Grade
+  // DECLARE GRADE
 
   printf("Grade %i", grade);
 
 }
+
 
 /*
 GOAL: This program evaluates readability of a text.asm
