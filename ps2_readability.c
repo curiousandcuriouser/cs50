@@ -10,17 +10,31 @@ int main(int argc, char *argv[])
   string textSample = get_string("Enter the text you want to evaluate: \n");
 
   int charCount = 0;
+  int wordCount = 0;
+  bool inWord = false;  
 
-  // COUNT CHARACTERS IN STRING
+  // COUNT CHARACTERS IN FIRST 100 WORDS
   for (int i = 0, length = strlen(textSample); i < length; i++)
   {
-    if (textSample[i] != ' ') // if the character is a letter
+    if ((!isspace(textSample[i]) && (!inWord)))
     {
-      charCount++;
+      inWord = true;
+      wordCount++;
+    } 
+    else if ((isspace(textSample[i]) && (inWord)))
+    {
+      inWord = false;
+    }
+
+    if (wordCount <= 100 && ((!isspace(textSample[i]))))
+    {
+        charCount++;
     }
   }
-  printf("%i\n", charCount);
-  return charCount;
+
+  printf("WORDCOUNT: %i\n", wordCount);
+  printf("CHARACTER COUNT: %i\n", charCount);
+  return 0;
 
   // C
   
