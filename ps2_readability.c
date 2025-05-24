@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
   string textSample = get_string("Enter the text you want to evaluate: \n");
 
   int charCount = 0;
+  int sentCount = 0;
   int wordCount = 0;
   bool inWord = false;  
 
@@ -34,18 +35,21 @@ int main(int argc, char *argv[])
 
   printf("WORDCOUNT: %i\n", wordCount);
   printf("CHARACTER COUNT: %i\n", charCount);
-  return 0;
-
-  // C
-  
-  // Equal number of words and spaces in a sentence
-  // Ratio of spaces to characters?
-  // EDGE CASE: If text has less than 100 words?
-
   
   
   int l;
   int s;
+
+  l = charCount / wordCount;
+  printf("L ratio: %i\n", l);
+
+  l = sentenceCount / wordCount;
+  printf("L ratio: %i\n", l);
+
+
+
+return 0;
+  
   int grade;
 
   // DECLARE GRADE
@@ -64,12 +68,14 @@ GOAL: This program evaluates readability of a text.asm
       S = average number of sentences per 100 words
 - Print Grade Level, from Before Grade 1 to Grade 16+
 
+ // EDGE CASE: If text has less than 100 words?
+
 
 Idea:
-** Define word for computer
+/ Define word for computer
 - Define sentence for computer
-- Take sample of 100 words
-- Calculate average number of letters in sample
+/ Take sample of 100 words
+** Calculate average number of letters in sample
 - Calculate average number of sentences in sample
 
 
