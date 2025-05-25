@@ -6,14 +6,17 @@
 
 int main(int argc, char *argv[])
 {
-  // GET TEXT
-  string textSample = get_string("Enter the text you want to evaluate: \n");
-
+  // INITIALIZE VARIABLE
   int charCount = 0;
   int sentCount = 0;
   int wordCount = 0;
   bool inWord = false; 
   bool sentBeginning = false;
+  float l;
+  float s;
+
+  // GET TEXT
+  string textSample = get_string("Enter the text you want to evaluate: \n");
 
   // COUNT CHARACTERS & SENTENCES IN FIRST 100 WORDS
   for (int i = 0, length = strlen(textSample); i < length; i++)
@@ -40,25 +43,20 @@ int main(int argc, char *argv[])
     }
   }
 
+  // PRINT METRICS
   printf("WORDCOUNT: %i\n", wordCount);
   printf("CHARACTER COUNT: %i\n", charCount);
   printf("SENTENCE COUNT: %i\n", sentCount);
   
-  
-  float l;
-  float s;
-
+  // CALCULATE RATIO
   l = ((float)charCount / wordCount) * 100;
   printf("L ratio: %f\n", l);
 
   s = ((float)sentCount / wordCount) * 100;
   printf("S ratio: %f\n", s);
 
+  // CALCULATE INDEX
   int index = 0.0588 * l - 0.296 * s - 15.8;
-  printf("Readability Index: %i\n", index);
-
-  
-  int grade;
 
   // DECLARE GRADE
   if (index < 1)
@@ -75,3 +73,9 @@ int main(int argc, char *argv[])
   }
   return 0;
 }
+
+/*
+TO DO:
+1. Refactor
+2. Figure out examples 2 & 3 issues
+*/
