@@ -2,7 +2,8 @@
 
 int main(void)
 {
-
+  // ASK FOR SUBSITUTION KEY
+  string substitutionKey = get_string("Enter the substitution key: \n");
 }
 
 /*
