@@ -25,21 +25,42 @@ int main(void)
     }
 
   // ASK FOR TEXT
-  string plaintext = get_string("Enter your text: \n");
+  string plainText = get_string("Enter your text: \n");
+
+  // LINK PLAIN AND CIPHER ALPHABET
+  int shifts[26];
+  
+  for (int i = 0, length = strlen(substitutionKey); i < length; i++)
+  {
+    char substitutionCharacter = substitutionKey[i];
+    string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    int shiftValue = substitutionCharacter - alphabet[i];
+    // LOGIC TEST printf("Shift %c by %i to get %c\n", alphabet[i], shiftValue, substitutionCharacter);
+    shifts[i] = shiftValue;
+  }
+  
 
   // ENCRYPT AND OUTPUT CIPHERTEXT
+  for (int i = 0, length = strlen(plainText); i < length; i++)
+  {
+    char currentCharacter = plainText[i];
+
+    if (isupper(currentCharacter))
+    {
+      char encryptedCharacter = currentCharacter + shifts[i];
+      printf("%c", encryptedCharacter);
+    }
+    else if (islower(currentCharacter))
+    {
+      char encryptedCharacter = currentCharacter + shifts[i];
+      printf("%c", encryptedCharacter);
+    }
+    else
+    {
+      printf("%c", currentCharacter);
+    }
+  }
+  printf("\n");
   
+  return 0;
 }
-
-/*
-1. Ask for substitution key
-  If no or too many CLA, print error message and return 1
-  If invalid, print error message and return 1
-2. Ask for plaintext with get_string
-3. Output ciphertext
-4. Print new line and return 0
-
-General:
-- Key should be case-insensitive
-- Preserve text case
-*/
