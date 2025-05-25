@@ -13,6 +13,8 @@ int main(void)
     return 1;
   }
 
+  // ASK FOR TEXT
+  string plaintext = get_string("Enter your text:  ");
 }
 
 /*
