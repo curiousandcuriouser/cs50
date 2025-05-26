@@ -1,0 +1,36 @@
+sort1 uses: BUBBLE SORT
+Random5000: 0,064
+Random5000: 7,176
+Reversed5000: 0,099
+Reversed50000: 5,879
+Sorted5000: 0,099
+Sorted50000: 0,402
+
+How do you know?: 
+Bubble sort is efficient for (mostly) sorted lists but not for random data.
+
+////////////////
+
+sort2 uses: MERGE SORT
+Random5000: 0,042
+Random50000: 0,491
+Reversed5000: 0,033
+Reversed50000: 0,419
+Sorted5000: 0,022
+Sorted50000: 0,382
+
+How do you know?:
+Merge sort takes about the same time regardless of whether the data is sorted or unsorted.
+
+///////////////
+
+sort3 uses: SELECT SORT
+Random5000: 0,048
+Random50000: 2,414
+Reversed5000: 0,041
+Reversed50000: 1,937
+Sorted5000: 0,040
+Sorted50000: 2,070
+
+How do you know?:
+Select sort is the slowest on average.
