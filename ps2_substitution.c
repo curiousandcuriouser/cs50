@@ -6,6 +6,8 @@
 bool noRepeat(string substitutionKey);
 string makeKeyUppercase(string substitutionKey);
 
+////////////////////////////////////////////////////////////////////
+
 int main(void)
 {
   // ASK FOR SUBSITUTION KEY
@@ -69,6 +71,8 @@ int main(void)
   
   return 0;
 }
+
+////////////////////////////////////////////////////////////////////
 
 // CHECK FOR DUPLICATES
 bool noRepeat(string substitutionKey)
