@@ -10,7 +10,7 @@ int main(void)
 {
   // ASK FOR SUBSITUTION KEY
   string substitutionKey = get_string("Enter the substitution key: \n");
-/*
+
   // VERIFY ONLY LETTERS
   for (int i = 0, length = strlen(substitutionKey); i < length; i++)
   {
@@ -34,30 +34,15 @@ int main(void)
       printf("Your input cannot have duplicate letters.\n");
       return 1;
   }
-  */
 
   // INITIALIZE LENGTH OF KEY
   int substitutionKeyLength = strlen(substitutionKey);
 
   // MAKE KEY UPPERCASE
   makeKeyUppercase(substitutionKey);
-  
 
   // ASK FOR TEXT
   string plainText = get_string("Enter your text: \n");
-
-  // LINK PLAIN AND CIPHER ALPHABET
-  int shifts[26];
-  
-  for (int i = 0, length = strlen(substitutionKey); i < length; i++)
-  {
-    char substitutionCharacter = substitutionKey[i];
-    string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    int shiftValue = substitutionCharacter - alphabet[i];
-    // LOGIC TEST printf("Shift %c by %i to get %c\n", alphabet[i], shiftValue, substitutionCharacter);
-    shifts[i] = shiftValue;
-  }
-  
 
   // ENCRYPT AND OUTPUT CIPHERTEXT
   for (int i = 0, length = strlen(plainText); i < length; i++)
@@ -66,12 +51,13 @@ int main(void)
 
     if (isupper(currentCharacter))
     {
-      char encryptedCharacter = currentCharacter + shifts[i];
+      char encryptedCharacter = substitutionKey[plainText[i] - 'A'];
       printf("%c", encryptedCharacter);
     }
     else if (islower(currentCharacter))
     {
-      char encryptedCharacter = currentCharacter + shifts[i];
+      char encryptedCharacter = tolower(substitutionKey[plainText[i] - 'a']);
+      //currentCharacter + shifts[i] - 'a';
       printf("%c", encryptedCharacter);
     }
     else
