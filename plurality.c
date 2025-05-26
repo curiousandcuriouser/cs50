@@ -20,7 +20,8 @@ int candidate_count;
 
 // Function prototypes
 bool vote(string name);
-void print_winner(void);
+int findMaxVote(void);
+void declareWinner(int maxVote);
 
 int main(int argc, string argv[])
 {
@@ -47,6 +48,8 @@ int main(int argc, string argv[])
     int voter_count = get_int("Number of voters: ");
 
     // Loop over all voters
+    int votes[candidate_count];
+
     for (int i = 0; i < voter_count; i++)
     {
         string name = get_string("Vote: ");
@@ -58,8 +61,11 @@ int main(int argc, string argv[])
         }
     }
 
+    
+
     // Display winner of election
-    print_winner();
+    int maxVote = findMaxVote();
+    declareWinner(maxVote);
 }
 
 // Update vote totals given a new vote
@@ -77,8 +83,66 @@ bool vote(string name)
 }
 
 // Print the winner (or winners) of the election
-void print_winner(void)
+int findMaxVote(void)
 {
-    // TODO
-    return;
+    int maxVote = 0;
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes > maxVote)
+        {
+            maxVote = candidates[i].votes;
+        }
+    }
+    return maxVote;
+}
+
+
+// DECLARE WINNER
+void declareWinner(int maxVote)
+{
+    int winnerCount = 0;
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes == maxVote)
+        {
+            winnerCount++;
+        }
+    }
+
+    if (winnerCount == 1)
+    {
+        for (int i = 0; i < candidate_count; i++)
+        {
+            if (candidates[i].votes == maxVote)
+        {
+            printf("%s wins!\n", candidates[i].name);
+            break;
+        }
+        }
+    }
+    else if (winnerCount > 1)
+    { 
+        printf("Tie between: ");
+        int mentionedWinners = 0;
+        for (int i = 0; i < candidate_count; i++)
+        {
+            if (candidates[i].votes == maxVote)
+            {
+                if (mentionedWinners > 0)
+                {
+                    if (mentionedWinners == winnerCount - 1)
+                    {
+                        printf(" and ");
+                    }
+                    else
+                    {
+                        printf(", ");
+                    }
+                }
+            printf("%s", candidates[i].name);
+            mentionedWinners++;
+            }
+        }
+    printf("!\n");
+    }
 }
