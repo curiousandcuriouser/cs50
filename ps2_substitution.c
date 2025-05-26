@@ -4,12 +4,13 @@
 #include <string.h>
 
 bool noRepeat(string substitutionKey);
+string makeKeyUppercase(string substitutionKey);
 
 int main(void)
 {
   // ASK FOR SUBSITUTION KEY
   string substitutionKey = get_string("Enter the substitution key: \n");
-
+/*
   // VERIFY ONLY LETTERS
   for (int i = 0, length = strlen(substitutionKey); i < length; i++)
   {
@@ -33,6 +34,14 @@ int main(void)
       printf("Your input cannot have duplicate letters.\n");
       return 1;
   }
+  */
+
+  // INITIALIZE LENGTH OF KEY
+  int substitutionKeyLength = strlen(substitutionKey);
+
+  // MAKE KEY UPPERCASE
+  makeKeyUppercase(substitutionKey);
+  
 
   // ASK FOR TEXT
   string plainText = get_string("Enter your text: \n");
@@ -88,4 +97,15 @@ bool noRepeat(string substitutionKey)
     }   
   }
   return true;
+}
+
+string makeKeyUppercase(string substitutionKey)
+{
+  int substitutionKeyLength = strlen(substitutionKey);
+
+  for (int i = 0; i < substitutionKeyLength; i++)
+  {
+    substitutionKey[i] = toupper(substitutionKey[i]);
+  }
+  return substitutionKey;
 }
