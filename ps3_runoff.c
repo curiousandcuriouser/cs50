@@ -144,10 +144,20 @@ void tabulate(void)
 {
     for (int i = 0; i < candidate_count; i++)
     {
-        if (strcmp(candidates[i].name, preferences[i][0]) == 0)
+        candidates[i].votes = 0;
+
+        for (int i = 0; i < voter_count; i++)
         {
-            candidates[i].votes++;
-            break;
+            for (int j = 0; j < candidate_count; j++)
+            {
+                int candidateRanking =  preferences[i][j];
+
+                if (!candidates[candidateRanking].eliminated)
+                {
+                    candidates[candidateRanking].votes++;
+                    break;
+                }
+            }
         }
     }
     return;
@@ -156,7 +166,7 @@ void tabulate(void)
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
-    // TODO
+    
     return false;
 }
 
