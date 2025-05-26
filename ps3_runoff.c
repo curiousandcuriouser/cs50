@@ -1,4 +1,5 @@
 #include "cs50.h"
+#include <limits.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -28,7 +29,7 @@ int candidate_count;
 bool vote(int voter, int rank, string name);
 void tabulate(void);
 bool print_winner(void);
-int find_min(void);
+int findMin(void);
 bool is_tie(int min);
 void eliminate(int min);
 
@@ -96,7 +97,7 @@ int main(int argc, string argv[])
         }
 
         // Eliminate last-place candidates
-        int min = find_min();
+        int min = findMin();
         bool tie = is_tie(min);
 
         // If tie, everyone wins
@@ -160,18 +161,18 @@ bool print_winner(void)
 }
 
 // Return the minimum number of votes any remaining candidate has
-int find_min(void)
+int findMin(void)
 {
-    int min = candidates[0].votes;
+    int min = INT_MAX; // INT_MAX to start with max value
 
     for (int i = 0; i < candidate_count; i++)
     {
-        if (candidates[i].votes < min)
+        if (candidates[i].votes < min && !candidates[i].eliminated)
         {
             min = candidates[i].votes;
         }
     }
-    return 0;
+    return min;
 }
 
 // Return true if the election is tied between all candidates, false otherwise
