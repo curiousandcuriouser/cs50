@@ -141,7 +141,14 @@ bool vote(int voter, int rank, string name)
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
-    // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (strcmp(candidates[i].name, preferences[i][0]) == 0)
+        {
+            candidates[i].votes++;
+            break;
+        }
+    }
     return;
 }
 
@@ -155,7 +162,15 @@ bool print_winner(void)
 // Return the minimum number of votes any remaining candidate has
 int find_min(void)
 {
-    // TODO
+    int min = candidates[0].votes;
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes < min)
+        {
+            min = candidates[i].votes;
+        }
+    }
     return 0;
 }
 
@@ -169,6 +184,12 @@ bool is_tie(int min)
 // Eliminate the candidate (or candidates) in last place
 void eliminate(int min)
 {
-    // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes == min)
+        {
+            candidates[] -= candidates[i];
+        }
+    }
     return;
 }
