@@ -25,10 +25,14 @@ candidate candidates[MAX_CANDIDATES];
 int voter_count;
 int candidate_count;
 
+// Winner count and names
+int winnerCount = 0;
+string winnerName = "";
+
 // Function prototypes
 bool vote(int voter, int rank, string name);
 void tabulate(void);
-bool print_winner(void);
+bool printWinner(void);
 int findMin(void);
 bool is_tie(int min);
 void eliminate(int min);
@@ -90,7 +94,7 @@ int main(int argc, string argv[])
         tabulate();
 
         // Check if election has been won
-        bool won = print_winner();
+        bool won = printWinner();
         if (won)
         {
             break;
@@ -144,7 +148,7 @@ void tabulate(void)
 {
     for (int z = 0; z < candidate_count; z++)
     {
-        candidates[i].votes = 0;
+        candidates[z].votes = 0;
 
         for (int i = 0; i < voter_count; i++)
         {
@@ -164,17 +168,23 @@ void tabulate(void)
 }
 
 // Print the winner of the election, if there is one
-bool print_winner(void)
+bool printWinner(void)
 {
     for (int i = 0; i < candidate_count; i++)
     {
-
-        if (candidates[i].votes > )
+        if (candidates[i].votes > ((float)(voter_count / 2)))
+        {
+            winnerCount++;
+            winnerName[MAX_CANDIDATES] = candidates[i].name;
+        }
     }
-    printf("%s has won the election", candidate[i].name)
-    return true;
-
+    if (winnerCount == 1)
+    {
+        printf("%s has won the election", winnerName);
+        return true;
+    }
     return false;
+    return winnerCount;
 }
 
 // Return the minimum number of votes any remaining candidate has
@@ -195,7 +205,29 @@ int findMin(void)
 // Return true if the election is tied between all candidates, false otherwise
 bool is_tie(int min)
 {
+    int maxVote = 0;
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (!candidates[i].eliminated && candidates[i].votes > maxVote)
+        {
+            maxVote = candidates[i].votes;
+        }
+    }
 
+    int tiedCandidates = 0;
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes == maxVote)
+        {
+            tiedCandidates++;
+        }
+    }
+
+    if (tiedCandidates > 1)
+    {
+        true;
+    }
     return false;
 }
 
