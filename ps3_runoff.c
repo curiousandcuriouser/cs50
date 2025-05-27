@@ -33,6 +33,8 @@ int findMin(void);
 bool is_tie(int);
 void eliminate(int min);
 
+//////////////////////////////////////////////////////////////////////////////////////
+
 int main(int argc, string argv[])
 {
     // Check for invalid usage
@@ -125,6 +127,8 @@ int main(int argc, string argv[])
     return 0;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////
+
 // Record preference if vote is valid
 bool vote(int voter, int rank, string name)
 {
@@ -163,18 +167,21 @@ bool printWinner(void)
 {
     int winnerCount = 0;
     string winnerName = NULL;
+    int winnerVotes = 0;
+
     for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes > (((float) voter_count / 2)))
         {
             winnerCount++;
             winnerName = candidates[i].name;   
+            winnerVotes = candidates[i].votes;   
         }
     }
 
     if (winnerCount == 1)
     {
-        printf("%s has won the election", winnerName);
+        printf("%s has won the election with %i votes\n", winnerName, winnerVotes);
         return true;
     }
 
