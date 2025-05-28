@@ -50,7 +50,6 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
-
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width / 2; j++)
@@ -67,5 +66,49 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
+    RGBTRIPLE copy[height][width];
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            copy[i][j] = image[i][j];
+        }
+    }
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            int sumRed = 0;
+            int sumGreen = 0;
+            int sumBlue = 0;
+            int count = 0; // To keep track of how many valid neighbors we have
+
+            // Iterate over the 3x3 grid around the current pixel (including itself)
+            for (int row_offset = -1; row_offset <= 1; row_offset++)
+            {
+                for (int col_offset = -1; col_offset <= 1; col_offset++)
+                {
+                    int neighbor_row = i + row_offset;
+                    int neighbor_col = j + col_offset;
+
+                    // Check if the neighbor pixel is within the image bounds
+                    if (neighbor_row >= 0 && neighbor_row < height &&
+                        neighbor_col >= 0 && neighbor_col < width)
+                    {
+                        sumRed += copy[neighbor_row][neighbor_col].rgbtRed;
+                        sumGreen += copy[neighbor_row][neighbor_col].rgbtGreen;
+                        sumBlue += copy[neighbor_row][neighbor_col].rgbtBlue;
+                        count++;
+                    }
+                }
+            }
+
+            // Calculate the average for each color component
+            image[i][j].rgbtRed = round((float)sumRed / count);
+            image[i][j].rgbtGreen = round((float)sumGreen / count);
+            image[i][j].rgbtBlue = round((float)sumBlue / count);
+        }
+    }  
     return;
 }
