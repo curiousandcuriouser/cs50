@@ -1,5 +1,6 @@
 {
   "files.associations": {
-    "string": "c"
+    "string": "c",
+    "ps5_inheritance": "c"
   }
 }
