@@ -1,6 +1,13 @@
 import math
 
-change = int(input("How much change do you need? "))
+#Ask for valid input
+while True:
+  change = int(input("How much change do you need? "))
+
+  if change > 0:
+    break
+  else:
+    pass
 
 denominationCoins = 0
 totalCoins = 0
