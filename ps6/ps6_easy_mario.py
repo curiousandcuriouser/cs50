@@ -1,12 +1,16 @@
-height = input("How high should the pyramid be? ")
 
-try: 
-  height = int(height)
-except ValueError: 
-  height = input("How high should the pyramid be? ")
 
-while height < 1 or height > 8:
-  height = int(input("How high should the pyramid be? ")) 
+while True:
+  height = input("How high should the pyramid be?  ")
+  
+  try: 
+    height = int(height)
+    
+    if height > 0 and height < 9:
+      break
+  except ValueError:
+    pass
+
 
 i = 1
 while i <= height:
