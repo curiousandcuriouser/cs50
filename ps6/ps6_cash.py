@@ -1,18 +1,22 @@
 import math
 
-#Ask for valid input
+# Ask for valid input
 while True:
-  change = int(input("How much change do you need? "))
+  change = input("How much change do you need in dollars? ")
+  
+  try: 
+    change = float(change)
+    change = change * 100
 
-  if change > 0:
-    break
-  else:
+    if change > 0:
+      break
+  except ValueError:
     pass
 
 denominationCoins = 0
 totalCoins = 0
 
-
+# Calculate number of coins
 if change / 25 != 0: #25c coins
   denominationCoins = math.floor((change / 25))
   totalCoins += denominationCoins
@@ -31,4 +35,4 @@ if change / 5 != 0: #5c coins
 if change > 0: #1c coins
   totalCoins += change
 
-print(totalCoins)
+print(int(totalCoins))
