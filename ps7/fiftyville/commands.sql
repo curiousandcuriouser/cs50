@@ -1,4 +1,4 @@
-Goal: Get broad overview of time, possible witnesses, and circumstance of abduction
+--Goal: Get broad overview of time, possible witnesses, and circumstance of abduction
 SELECT * FROM crime_scene_reports;
 /*Result:
 id: 295
@@ -9,7 +9,7 @@ Hints:
 3. each witness mentions bakery
 */
 
-Goal: Find all interview that mention bakery to get more information
+--Goal: Find all interview that mention bakery to get more information
 SELECT * FROM interviews WHERE transcript LIKE '%bakery%';
 --Result: 
 /*id: 161
@@ -32,10 +32,8 @@ Hints:
 5. The other person purchased the flight ticket. --?
 */
 
-Goal: Find names, license plates and times for those aroudn carpark around 10-11
-SELECT bakery_security_logs.*, people.name FROM bakery_security_logs JOIN people ON p
-eople.license_plate = bakery_security_logs.license_plate WHERE year = 2024 AND  month = 7 AND
-day = 28 AND hour = 10;
+--Goal: Find names, license plates and times for those aroudn carpark around 10-11
+SELECT bakery_security_logs.*, people.name FROM bakery_security_logs JOIN people ON people.license_plate = bakery_security_logs.license_plate WHERE year = 2024 AND  month = 7 AND day = 28 AND hour = 10;
 /*Results:
 +-----+------+-------+-----+------+--------+----------+---------------+---------+
 | id  | year | month | day | hour | minute | activity | license_plate |  name   |
@@ -140,16 +138,38 @@ SELECT flights.* FROM flights
 +----+-------------------+------------------------+------+-------+-----+------+--------+
 | id | origin_airport_id | destination_airport_id | year | month | day | hour | minute |
 +----+-------------------+------------------------+------+-------+-----+------+--------+
-| 6  | 8                 | 5                      | 2024 | 7     | 28  | 13   | 49     |
-| 35 | 8                 | 4                      | 2024 | 7     | 28  | 16   | 16     |
-| 34 | 8                 | 5                      | 2024 | 7     | 28  | 17   | 20     |
-| 1  | 8                 | 7                      | 2024 | 7     | 28  | 17   | 50     |
-| 17 | 8                 | 4                      | 2024 | 7     | 28  | 20   | 16     |
+| 36 | 8                 | 4                      | 2024 | 7     | 29  | 8    | 20     |
+| 43 | 8                 | 1                      | 2024 | 7     | 29  | 9    | 30     |
+| 23 | 8                 | 11                     | 2024 | 7     | 29  | 12   | 15     |
+| 53 | 8                 | 9                      | 2024 | 7     | 29  | 15   | 20     |
+| 18 | 8                 | 6                      | 2024 | 7     | 29  | 16   | 0      |
 +----+-------------------+------------------------+------+-------+-----+------+--------+
 */
 
 -- Goal: Find name of destination airport
-SELECT city FROM airports WHERE id = 5;
+SELECT city FROM airports WHERE id = 4;
 /*Results
-Dallas!
+New York City
+*/
+
+-- Goal: See who is booked onto Fiftyville - New York City flight
+SELECT passengers.*, people.name FROM passengers
+...> JOIN people ON people.passport_number = passengers.passport_number
+...> JOIN flights ON flights.id = passengers.flight_id
+...> WHERE flights.id = 36;
+
+/* Results
++-----------+-----------------+------+--------+
+| flight_id | passport_number | seat |  name  |
++-----------+-----------------+------+--------+
+| 36        | 7214083635      | 2A   | Doris  |
+| 36        | 1695452385      | 3B   | Sofia  |
+| 36        | 5773159633      | 4A   | Bruce  |
+| 36        | 1540955065      | 5C   | Edward |
+| 36        | 8294398571      | 6C   | Kelsey |
+| 36        | 1988161715      | 6D   | Taylor |
+| 36        | 9878712108      | 7A   | Kenny  |
+| 36        | 8496433585      | 7B   | Luca   |
++-----------+-----------------+------+--------+
+
 */
