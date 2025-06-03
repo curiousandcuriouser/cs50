@@ -1,13 +1,14 @@
 sqlite3
 .header on
 .mode table
-SELECT title FROM movies WHERE year = 2008; -- Find all movies made in 2008
-SELECT birth FROM people WHERE name = 'Emma Stone'; -- Find Emma Stone's YOB
-SELECT title FROM movies WHERE year >= 2018 ORDER BY title ASC; -- Find all movies made on or after 2018 ordered alphabetically
-SELECT COUNT(rating) FROM ratings WHERE rating = 10.0; -- Count all movies with rating 10
-In 5.sql, write a SQL query to list the titles and release years of all Harry Potter movies, in chronological order.
-Your query should output a table with two columns, one for the title of each movie and one for the release year of each movie.
-You may assume that the title of all Harry Potter movies will begin with the words “Harry Potter”, and that if a movie title begins with the words “Harry Potter”, it is a Harry Potter movie.
+SELECT title FROM movies WHERE year = 2008; -- 1: Find all movies made in 2008
+SELECT birth FROM people WHERE name = 'Emma Stone'; -- 2: Find Emma Stone's YOB
+SELECT title FROM movies WHERE year >= 2018 ORDER BY title ASC; -- 3: Find all movies made on or after 2018 ordered alphabetically
+SELECT COUNT(rating) FROM ratings WHERE rating = 10.0; -- 4: Count all movies with rating 10
+SELECT title, year FROM movies WHERE title LIKE 'Harry Potter%' ORDER BY year ASC; -- 5: List all Harry Potter Movies chronologically
+
+
+
 In 6.sql, write a SQL query to determine the average rating of all movies released in 2012.
 Your query should output a table with a single column and a single row (not counting the header) containing the average rating.
 In 7.sql, write a SQL query to list all movies released in 2010 and their ratings, in descending order by rating. For movies with the same rating, order them alphabetically by title.
