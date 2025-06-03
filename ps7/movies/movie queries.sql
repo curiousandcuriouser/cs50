@@ -6,11 +6,10 @@ SELECT birth FROM people WHERE name = 'Emma Stone'; -- 2: Find Emma Stone's YOB
 SELECT title FROM movies WHERE year >= 2018 ORDER BY title ASC; -- 3: Find all movies made on or after 2018 ordered alphabetically
 SELECT COUNT(rating) FROM ratings WHERE rating = 10.0; -- 4: Count all movies with rating 10
 SELECT title, year FROM movies WHERE title LIKE 'Harry Potter%' ORDER BY year ASC; -- 5: List all Harry Potter Movies chronologically
+SELECT AVG(rating) FROM ratings JOIN movies ON ratings.movie_id = movies.id WHERE year = 2012; -- Find average rating for all movies released in 2012 
 
 
-
-In 6.sql, write a SQL query to determine the average rating of all movies released in 2012.
-Your query should output a table with a single column and a single row (not counting the header) containing the average rating.
+.
 In 7.sql, write a SQL query to list all movies released in 2010 and their ratings, in descending order by rating. For movies with the same rating, order them alphabetically by title.
 Your query should output a table with two columns, one for the title of each movie and one for the rating of each movie.
 Movies that do not have ratings should not be included in the result.
