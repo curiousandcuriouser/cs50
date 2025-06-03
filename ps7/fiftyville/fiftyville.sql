@@ -1,8 +1,6 @@
-
-
-Name of the Thief:
-Name of the Accomplice:
-Name of the Escape Town:
+Name of the Thief: Bruce
+Name of the Accomplice: Robin
+Name of the Escape Town: NYC
 
 
 
