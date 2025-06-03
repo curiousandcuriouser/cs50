@@ -22,12 +22,14 @@ SELECT name FROM people
   JOIN movies ON movies.id = directors.movie_id
   JOIN ratings ON ratings.movie_id = movies.id
   WHERE rating >= 9.0; -- List names of directors with a 9.0 movie rating
-  
-Your query should output a table with a single column for the name of each person.
-If a person directed more than one movie that received a rating of at least 9.0, they should only appear in your results once.
-In 11.sql, write a SQL query to list the titles of the five highest rated movies (in order) that Chadwick Boseman starred in, starting with the highest rated.
-Your query should output a table with a single column for the title of each movie.
-You may assume that there is only one person in the database with the name Chadwick Boseman.
+SELECT title FROM movies
+  JOIN ratings ON ratings.movie_id = movies.id
+  JOIN stars ON stars.movie_id = movies.id
+  JOIN people ON people.id = stars.person_id
+  WHERE stars.person_id = (SELECT id FROM people WHERE name = 'Chadwick Boseman')
+  ORDER BY rating DESC
+  LIMIT 5; -- 11: List 5 best-rated films with Chadwick Boseman
+
 In 12.sql, write a SQL query to list the titles of all movies in which both Bradley Cooper and Jennifer Lawrence starred.
 Your query should output a table with a single column for the title of each movie.
 You may assume that there is only one person in the database with the name Bradley Cooper.
