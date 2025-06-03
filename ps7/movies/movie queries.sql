@@ -29,11 +29,20 @@ SELECT title FROM movies
   WHERE stars.person_id = (SELECT id FROM people WHERE name = 'Chadwick Boseman')
   ORDER BY rating DESC
   LIMIT 5; -- 11: List 5 best-rated films with Chadwick Boseman
+SELECT title FROM movies
+  JOIN stars AS s ON m.id = s.movie_id
+  JOIN people AS p ON s.person_id = p.id
+  WHERE name = 'Bradley Cooper'
 
-In 12.sql, write a SQL query to list the titles of all movies in which both Bradley Cooper and Jennifer Lawrence starred.
-Your query should output a table with a single column for the title of each movie.
-You may assume that there is only one person in the database with the name Bradley Cooper.
-You may assume that there is only one person in the database with the name Jennifer Lawrence.
+INTERSECT
+
+SELECT title FROM movies
+  JOIN stars ON movies.id = stars.movie_id
+  JOIN people ON stars.person_id = people.id
+  WHERE name = 'Jennifer Lawrence'; -- 12: Find all movies with Bradley Cooper and Jennifer Lawrence
+
+
+
 In 13.sql, write a SQL query to list the names of all people who starred in a movie in which Kevin Bacon also starred.
 Your query should output a table with a single column for the name of each person.
 There may be multiple people named Kevin Bacon in the database. Be sure to only select the Kevin Bacon born in 1958.
