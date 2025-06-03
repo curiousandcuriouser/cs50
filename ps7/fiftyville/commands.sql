@@ -123,3 +123,33 @@ Possible Suspects:
 | 261 | 2024 | 7     | 28  | 10   | 18     | exit     | 94KL13X       | Bruce   |
 | 266 | 2024 | 7     | 28  | 10   | 23     | exit     | 322W7JE       | Diana   |
 */
+
+-- Goal: Find id of Fiftyville aiport
+SELECT id FROM airports WHERE city = 'Fiftyville';
+/* Results
+id: 8
+*/
+
+-- Goal: Find earliest flight from Fiftyville
+SELECT flights.* FROM flights
+...> JOIN airports ON airports.id = flights.origin_airport_id
+...> WHERE origin_airport_id = 8 AND year = 2024 AND month = 7 AND day = 28
+...> ORDER BY hour ASC, minute ASC;
+/* Results
+
++----+-------------------+------------------------+------+-------+-----+------+--------+
+| id | origin_airport_id | destination_airport_id | year | month | day | hour | minute |
++----+-------------------+------------------------+------+-------+-----+------+--------+
+| 6  | 8                 | 5                      | 2024 | 7     | 28  | 13   | 49     |
+| 35 | 8                 | 4                      | 2024 | 7     | 28  | 16   | 16     |
+| 34 | 8                 | 5                      | 2024 | 7     | 28  | 17   | 20     |
+| 1  | 8                 | 7                      | 2024 | 7     | 28  | 17   | 50     |
+| 17 | 8                 | 4                      | 2024 | 7     | 28  | 20   | 16     |
++----+-------------------+------------------------+------+-------+-----+------+--------+
+*/
+
+-- Goal: Find name of destination airport
+SELECT city FROM airports WHERE id = 5;
+/*Results
+Dallas!
+*/
