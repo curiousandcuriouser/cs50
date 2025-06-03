@@ -7,12 +7,8 @@ SELECT title FROM movies WHERE year >= 2018 ORDER BY title ASC; -- 3: Find all m
 SELECT COUNT(rating) FROM ratings WHERE rating = 10.0; -- 4: Count all movies with rating 10
 SELECT title, year FROM movies WHERE title LIKE 'Harry Potter%' ORDER BY year ASC; -- 5: List all Harry Potter Movies chronologically
 SELECT AVG(rating) FROM ratings JOIN movies ON ratings.movie_id = movies.id WHERE year = 2012; -- Find average rating for all movies released in 2012 
+SELECT title, rating FROM movies JOIN ratings ON ratings.movie_id = movies.id WHERE year = 2010 ORDER BY rating DESC, title ASC; -- 7: Sort all 2010 movies by rating alphabetically
 
-
-.
-In 7.sql, write a SQL query to list all movies released in 2010 and their ratings, in descending order by rating. For movies with the same rating, order them alphabetically by title.
-Your query should output a table with two columns, one for the title of each movie and one for the rating of each movie.
-Movies that do not have ratings should not be included in the result.
 In 8.sql, write a SQL query to list the names of all people who starred in Toy Story.
 Your query should output a table with a single column for the name of each person.
 You may assume that there is only one movie in the database with the title Toy Story.
