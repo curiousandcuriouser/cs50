@@ -95,6 +95,31 @@ Possible Suspects:
 | 263 | 2024 | 7     | 28  | 10   | 19     | exit     | 4328GD8       | Luca    |
 | 265 | 2024 | 7     | 28  | 10   | 21     | exit     | L93JTIZ       | Iman    |
 | 266 | 2024 | 7     | 28  | 10   | 23     | exit     | 322W7JE       | Diana   |
+*/
 
 -- Goal: Figure out who called for less than a minute
+SELECT phone_calls.*, caller.name AS caller, receiver.name AS receiver FROM phone_cal
+ls
+...> JOIN people AS caller ON caller.phone_number = phone_calls.caller
+...> JOIN people AS receiver ON receiver.phone_number = phone_calls.receiver
+...> WHERE year = 2024 AND month = 7 AND day = 28 AND duration < 60;
 
+/* Results: 
++-----+----------------+----------------+------+-------+-----+----------+---------+------------+
+| id  |     caller     |    receiver    | year | month | day | duration | caller  |  receiver  |
++-----+----------------+----------------+------+-------+-----+----------+---------+------------+
+| 221 | (130) 555-0289 | (996) 555-8899 | 2024 | 7     | 28  | 51       | Sofia   | Jack       |
+| 224 | (499) 555-9472 | (892) 555-8872 | 2024 | 7     | 28  | 36       | Kelsey  | Larry      |
+| 233 | (367) 555-5533 | (375) 555-8161 | 2024 | 7     | 28  | 45       | Bruce   | Robin      |
+| 251 | (499) 555-9472 | (717) 555-1342 | 2024 | 7     | 28  | 50       | Kelsey  | Melissa    |
+| 254 | (286) 555-6063 | (676) 555-6554 | 2024 | 7     | 28  | 43       | Taylor  | James      |
+| 255 | (770) 555-1861 | (725) 555-3243 | 2024 | 7     | 28  | 49       | Diana   | Philip     |
+| 261 | (031) 555-6622 | (910) 555-3251 | 2024 | 7     | 28  | 38       | Carina  | Jacqueline |
+| 279 | (826) 555-1652 | (066) 555-9701 | 2024 | 7     | 28  | 55       | Kenny   | Doris      |
+| 281 | (338) 555-6650 | (704) 555-2131 | 2024 | 7     | 28  | 54       | Benista | Anna       |
++-----+----------------+----------------+------+-------+-----+----------+---------+------------+
+
+Possible Suspects:
+| 261 | 2024 | 7     | 28  | 10   | 18     | exit     | 94KL13X       | Bruce   |
+| 266 | 2024 | 7     | 28  | 10   | 23     | exit     | 322W7JE       | Diana   |
+*/
