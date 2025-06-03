@@ -30,8 +30,8 @@ SELECT title FROM movies
   ORDER BY rating DESC
   LIMIT 5; -- 11: List 5 best-rated films with Chadwick Boseman
 SELECT title FROM movies
-  JOIN stars AS s ON m.id = s.movie_id
-  JOIN people AS p ON s.person_id = p.id
+  JOIN stars ON movies.id = stars.movie_id
+  JOIN people ON stars.person_id = people.id
   WHERE name = 'Bradley Cooper'
 
 INTERSECT
@@ -41,9 +41,40 @@ SELECT title FROM movies
   JOIN people ON stars.person_id = people.id
   WHERE name = 'Jennifer Lawrence'; -- 12: Find all movies with Bradley Cooper and Jennifer Lawrence
 
+SELECT DISTINCT(name)  
+FROM people  
+WHERE name IS NOT 'Kevin Bacon' AND id IN(
+    SELECT person_id FROM stars WHERE movie_id IN(
+        SELECT movie_id FROM stars WHERE person_id IN(
+            SELECT id FROM people WHERE name IS 'Kevin Bacon'and birth = 1958)))  
+ORDER BY name; -- 13: List the names of all people who starred in a movie in which Kevin Bacon (b.1958) also starred.
 
 
-In 13.sql, write a SQL query to list the names of all people who starred in a movie in which Kevin Bacon also starred.
+
+
+In 13.sql, write a SQL query to 
 Your query should output a table with a single column for the name of each person.
 There may be multiple people named Kevin Bacon in the database. Be sure to only select the Kevin Bacon born in 1958.
 Kevin Bacon himself should not be included in the resulting list.
+
+
+
+
+Movies
+stars
+people
+
+1. Select name 
+
+SELECT DISTINCT name FROM people JOIN stars ON stars.person_id = people.id 
+WHERE stars.movie_id IN (
+SELECT stars.movie_id 
+FROM stars
+WHERE people.name = 'Kevin Bacon' AND people.birth = 1958)
+AND people.name != 'Kevin Bacon' ;
+
+For stars
+In the same movie
+As Kevin Bacon
+Born in 1958
+And don't include Kevin Bacon
