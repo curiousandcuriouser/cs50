@@ -13,6 +13,9 @@
                 const wrongAnswer2 = document.querySelector('.wrong2');
                 const wrongAnswer3 = document.querySelector('.wrong3');
                 const reply = document.querySelector('.reply');
+                const confirmationButton = document.querySelector('.confirm');
+                const answer = document.querySelector('.answer');
+                const inputText = document.querySelector('input');
 
                 correctAnswer.addEventListener('click', () => {
                     correctAnswer.style.backgroundColor = 'green';
@@ -33,16 +36,12 @@
                     wrongAnswer3.style.backgroundColor = 'red';
                     reply.innerHTML = 'Incorrect';
                 });
+
+                confirmationButton.addEventListener('click', () => {
+                    inputText.style.backgroundColor = 'green';
+                    answer.innerHTML = 'Correct!';
+                });
             });
-            /*
-            <script>
-        const button =
-            document.querySelector('button');
-        button.addEventListener('click',
-            () => {
-                button.style.backgroundColor = 
-                    "green";
-            });*/
     </script>
         </script>
     </head>
@@ -70,7 +69,8 @@
                 <!-- TODO: Add free response question here -->
                 <h3>But, do <i>you</i> believe in life after love?</h3>
                 <input>
-                <button>Confirm opinion!</button>
+                <button class="confirm">Confirm opinion!</button>
+                <p class="answer"></p>
             </div>
         </div>
     </body>
