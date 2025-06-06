@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', () => {
+                const correctAnswer = document.querySelector('.right');
+                const wrongAnswer1 = document.querySelector('.wrong1');
+                const wrongAnswer2 = document.querySelector('.wrong2');
+                const wrongAnswer3 = document.querySelector('.wrong3');
+                const reply = document.querySelector('.reply');
+
+                correctAnswer.addEventListener('click', () => {
+                    correctAnswer.style.backgroundColor = 'green';
+                    reply.innerHTML = 'Correct!';
+                });
+
+                wrongAnswer1.addEventListener('click', () => {
+                    wrongAnswer1.style.backgroundColor = 'red';
+                    reply.innerHTML = 'Incorrect';
+                });
+
+                wrongAnswer2.addEventListener('click', () => {
+                    wrongAnswer2.style.backgroundColor = 'red';
+                    reply.innerHTML = 'Incorrect';
+                });
+
+                wrongAnswer3.addEventListener('click', () => {
+                    wrongAnswer3.style.backgroundColor = 'red';
+                    reply.innerHTML = 'Incorrect';
+                });
+            });
+            /*
+            <script>
+        const button =
+            document.querySelector('button');
+        button.addEventListener('click',
+            () => {
+                button.style.backgroundColor = 
+                    "green";
+            });*/
+    </script>
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>Do you believe in life after love, ________?</h3>
+                <button class="right">Cher</button>
+                <button class="wrong1">Donna</button>
+                <button class="wrong2">Barbara</button>
+                <button class="wrong3">Chaka</button>
+                <p class="reply"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>But, do <i>you</i> believe in life after love?</h3>
+                <input>
+                <button>Confirm opinion!</button>
+            </div>
+        </div>
+    </body>
+</html>
