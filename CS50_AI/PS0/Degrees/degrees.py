@@ -94,6 +94,24 @@ def shortest_path(source, target):
     # Source and target are defined as X = person_id_for_name(input("Name: "))
     # Create a 
 
+    queue = []
+    visited = []
+
+    queue = (source, [])
+
+
+    while queue is not empty:
+        if 
+
+
+
+
+
+
+    people[path[i][1]]["name"]
+    people[path[i + 1][1]]["name"]
+    movies[path[i + 1][0]]["title"]
+
     class Node():
         def __init__(self, state, parent, action):
             self.state = state
