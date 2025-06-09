@@ -1,9 +1,26 @@
 # Prompt for input: X/Y
-fraction = "Provide a fraction in this format, X/Y: "
+while True:
+  try:
+    fraction = input("Provide a fraction in this format, X / Y: ")
+    break
+  except (ValueError, ZeroDivisionError):
+    pass
 
-# Convert to percentage
-# Round to nearest int
+# Split numbers and calculate fraction
+numbers = fraction.split("/")
+calculate = int(numbers[0]) / int(numbers[1])
+
+# Convert to percentage & round
+percentage = round(calculate * 100)
+
 # Display take gauge:
-  # 1 => E
-  # 99 =< F
-  # Others in percent
+if 1 < percentage < 99:
+  print(f"{percentage}%")
+elif percentage <= 1:
+  print("E")
+else:
+  print("F")
+
+
+
+
