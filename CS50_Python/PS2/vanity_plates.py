@@ -15,29 +15,26 @@ def main():
   else:
       print("Invalid")
 
-character_list = []
-print(f"{character_list}")
-
 def is_valid(plate):
-  for character in plate:
-      character_list.append(character)
-      print(f"{character_list}")
-  
-  if 2 > len(character_list) > 6:
+  if 2 > len(plate) > 6:
     print("Failed at: 2 > len(character_list) > 6")
     return False
 
-  for character in character_list:
+  for character in plate:
     if character.isalpha() or character.isdigit():
       pass
     else:
       print("Failed at: all numbers & letters")
       break
-    
-    if character == character_list[0] or character == character_list[1] and character.isalpha():
+
+    if plate[0] or plate[1] and character.isalpha():
       pass
     else:
       print("Failed at: first 2 digits")
       break
+    
+    for i in range(len(plate)):
+      if character.isalpha() and plate[i + 1].isdigit() and plate[i + 2].isalpha():
+        break
 
 main()
