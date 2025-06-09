@@ -1,6 +1,19 @@
+shopping_list = []
+
 # Prompt  user for items, one per line
-  # Treat the user’s input case-insensitively
-# Stop if input control-d
+while True:
+  try:
+    # Ask for input and convert to UPPERCASE
+    item = input("Item: ").upper()
+    shopping_list.append(item)
+      
+  # Stop when use input Ctrl + D
+  except EOFError:
+    print("\n")
+    break
+  else:
+    pass
+
 # Output the user’s grocery list
   # in all uppercase
   # sorted alphabetically
