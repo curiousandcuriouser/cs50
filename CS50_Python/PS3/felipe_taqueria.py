@@ -10,3 +10,10 @@ menu = {
     "Tortilla Salad": 8.00
 }
 
+# Ask for input and convert to Title Case
+item = input("Item: ").title()
+
+
+
+# Calculate price
+# Stop when use input Ctrl + D
