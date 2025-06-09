@@ -6,12 +6,9 @@ while True:
   except (ValueError, ZeroDivisionError):
     pass
 
-# Split numbers and calculate fraction
+# Split numbers and calculate rounded percentage
 numbers = fraction.split("/")
-calculate = int(numbers[0]) / int(numbers[1])
-
-# Convert to percentage & round
-percentage = round(calculate * 100)
+percentage = round((int(numbers[0]) / int(numbers[1]))*100)
 
 # Display take gauge:
 if 1 < percentage < 99:
