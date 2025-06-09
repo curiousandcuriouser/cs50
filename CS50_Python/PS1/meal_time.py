@@ -17,5 +17,4 @@ def convert(time):
   time = float(hour + minutes)
   return time
 
-  
-main()
+main()   
