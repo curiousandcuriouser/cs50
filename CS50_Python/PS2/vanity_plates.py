@@ -16,7 +16,7 @@ def main():
       print("Invalid")
 
 def is_valid(plate):
-  if 2 > len(plate) > 6:
+  if 2 > len(plate) or len(plate) > 6:
     print("Failed at: 2 > len(character_list) > 6")
     return False
   
@@ -24,17 +24,24 @@ def is_valid(plate):
     print("Failed at: first 2 digits")
     return False
 
-  for character in plate:
-    if character.isalpha() or character.isdigit():
-      pass
-    else:
+  in_number = False
+  
+  for i in range(len(plate)):
+    character = plate[i]
+    if not character.isalnum():
       print("Failed at: all numbers & letters")
-      break
-
-    
-    
-    for i in range(len(plate)):
-      if character.isalpha() and plate[i + 1].isdigit() and plate[i + 2].isalpha():
-        break
+      return False
+  
+    if character.isdigit():
+      if not in_number:
+        if character == '0':
+          print("Failed at: first number is 0")
+          return False
+        in_number = True
+    elif character.isalpha():
+      if in_number:
+        print("Failed at: letter after a number (number in middle)")
+        return False
+  return True
 
 main()
