@@ -10,7 +10,8 @@ while amount_due > 0:
   else: 
     pass
 
-   
+if amount_due <= 0:
+      print(f"Change Owed:", + amount_due * -1)
 
 
 # Display amount due
