@@ -1,32 +1,36 @@
-# Prompt user for fruit input
-fruit = input("Fruit: ")
-
-# Make input case insensitive
-fruit = fruit.lower()
-
 # Make dict for fruit info
-fruits = [
-  {"fruit": "apple", "calories": "130" }
-  {"fruit": "avocado", "calories": "50"}
-  {"fruit": "banana", "calories": "110"}
-  {"fruit": "cantaloupe", "calories": "50"}
-  {"fruit": "grapefruit", "calories": "60"}
-  {"fruit": "grapes", "calories": "90"}
-  {"fruit": "honeydew melon", "calories": "50"}
-  {"fruit": "kiwi", "calories": "90"}
-  {"fruit": "lemon", "calories": "15"}
-  {"fruit": "lime", "calories": "20"}
-  {"fruit": "nectarine", "calories": "60"}
-  {"fruit": "orange", "calories": "80"}
-  {"fruit": "peach", "calories": "60"}
-  {"fruit": "pear", "calories": "100"}
-  {"fruit": "pineapple", "calories": "50"}
-  {"fruit": "plums", "calories": "70"}
-  {"fruit": "strawberries", "calories": "50"}
-  {"fruit": "cherries", "calories": "100"}
-  {"fruit": "tangerine", "calories": "50"}
-  {"fruit": "watermelon", "calories": "80"}
-]
+fruits = {
+  "apple": "130",
+  "avocado": "50",
+  "banana": "110",
+  "cantaloupe": "50",
+  "grapefruit": "60",
+  "grapes": "90",
+  "honeydew melon": "50",
+  "kiwi": "90",
+  "lemon": "15",
+  "lime": "20",
+  "nectarine": "60",
+  "orange": "80",
+  "peach": "60",
+  "pear": "100",
+  "pineapple": "50",
+  "plums": "70",
+  "strawberries": "50",
+  "cherries": "100",
+  "tangerine": "50",
+  "watermelon": "80",
+}
 
-# Output calories for one portion
 
+while True:
+  # Prompt user for fruit input
+  fruit = input("Fruit: ").lower()
+  
+  # Output calories for one portion
+  if fruit in fruits:
+    calories = fruits[fruit]
+    print(f"Calories: {calories}")
+    break
+  else:
+    print("Try a different fruit!")
