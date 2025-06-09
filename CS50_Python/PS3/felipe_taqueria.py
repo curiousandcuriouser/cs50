@@ -10,10 +10,27 @@ menu = {
     "Tortilla Salad": 8.00
 }
 
-# Ask for input and convert to Title Case
-item = input("Item: ").title()
+total = 0
+
+while True:
+  try:
+    # Ask for input and convert to Title Case
+    item = input("Item: ").title()
+
+    # Find item prace and add to total
+    if item in menu:
+      price = menu[item]
+      total += price
+      print(f"${total:.2f}")
+      
+  # Stop when use input Ctrl + D
+  except EOFError:
+    print("\n")
+    break
+  else:
+    pass
+  
 
 
 
-# Calculate price
-# Stop when use input Ctrl + D
+
