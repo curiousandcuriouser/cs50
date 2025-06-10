@@ -18,20 +18,14 @@ def get_names():
 
 
 def adieu(names):
-  if len(names) == 1:
+  count = len(names)
+
+  if count == 1:
     print(f"Adieu, adieu, to {names[0]}.")
-  elif len(names) == 2:
+  elif count == 2:
     print(f"Adieu, adieu, to {names[0]} and {names[1]}.")
   else:
-    print("Adieu, adieu, to ", end="")
-    i = len(names)
-    j = 0
-    while i > 1:
-      print(f"{names[j]}, ", end="")
-      i -= 1
-      j += 1
-    if i == 1:
-      print(f"and {names[j]}.")
-      i -= 1
+    initial_names = ", ".join(names[:-1])
+    print(f"Adieu, adieu, to {initial_names}, and {names[-1]}.")
 
 main()
