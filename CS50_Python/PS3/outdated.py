@@ -14,12 +14,26 @@ months = {
 }
 
 def main ():
-  get_date()
+  date = get_date()
   convert_date(date)
 
 def get_date():
+  while True:
+    date = input("Date in month-day-year format: ")
+    date.split("/")
+    date.split(" ", ",")
+
+    if not date[0] in months:
+      continue
+    if not 0 < date[1] < 13:
+      continue
+    if not date[3] > 0:
+      continue
+    else: 
+      return date
 
 def convert_date():
+  print("\n")
 
 main()
 
