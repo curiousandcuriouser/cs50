@@ -14,10 +14,15 @@ if len(sys.argv) == 1 or len(sys.argv) == 3:
   if len(sys.argv) == 1:
     random_font = random.choice(figlet.getFonts())
     figlet.setFont(font=random_font)
-
   # Sets desired font
-  if len(sys.argv) == 3:
-    figlet.setFont(sys.argv[2])
+  elif len(sys.argv) == 3:
+    desired_font = sys.argv[2]
+    if desired_font not in figlet.getFonts():
+      print("Invalid font")
+      print("Available fonts: acrobatic, alligator, bubble, caligraphy, coinstak, diamond, eftiwater, fuzzy, isometric3, pawp, roman, speed, ticks, weird. Add -f font to program")
+      sys.exit()
+    else:
+      figlet.setFont(font=desired_font)
 
 # Expects zero or two command-line arguments  
 else:
