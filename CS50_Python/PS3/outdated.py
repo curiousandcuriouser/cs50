@@ -28,7 +28,7 @@ def get_date():
         continue
 
     elif "," in date:
-      date = date.replace(",", "")
+      date = date.replace(",", "").title()
       date = date.split(" ")
       if not date[0] in months:
         print("Error months word")
