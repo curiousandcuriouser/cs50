@@ -8,7 +8,7 @@ def main():
   
 def get_level():
   while True:
-    level = input("Level: ")
+    level = int(input("Level: "))
 
     # Reprompt if not positive integer
     if level < 1:
@@ -16,8 +16,19 @@ def get_level():
     else:
       return level
 
-def random_number():
-  number = random.
+def random_number(level):
+  number = random.randint(1, level)
+  guess = int(input("Guess: "))
+
+
+  if guess == number:
+    print("Just right!")
+  elif guess > number:
+    print("Too large!")
+  else:
+    print("Just right!")
+
+main()
 
 # Randomly generates an integer between 1 and, inclusive, using the random module.
 # Prompts the user to guess that integer. If the guess is not a positive integer, the program should prompt the user again.
