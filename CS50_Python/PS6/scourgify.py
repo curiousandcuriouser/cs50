@@ -14,18 +14,20 @@ try:
 
   students = []
 
-  with open(sys.argv[1]) as infile:
-    for student in infile:
-        full_name, house = student[0], student[1]
+  with open(sys.argv[1], "r") as file:
+    reader = csv.reader(file)
+    next(reader)
 
+    for row in reader:
+        full_name, house = row[0], row[1]
         cleaned_full_name = full_name.strip('"')
-        last, first = student.split(",", 1)
-        student = {"first": first, "last": last, "house": house}
-        students.append(student)
+        last, first = cleaned_full_name.split(",", 1) 
+        students.append({"first": first.strip(), "last".strip(): last, "house": house.strip()})
   
-  with open("after.csv", "w") as outfile:
+  with open(sys.argv[2], "w") as outfile:
     writer = csv.DictWriter(outfile, fieldnames=["first", "last", "house"])
-    writer.writerow({"first": first, "last": last, "house": house})
+    writer.writeheader() 
+    writer.writerows(students)
 
 except FileNotFoundError:
     print("File does not exist")
