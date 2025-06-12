@@ -1,4 +1,5 @@
 import random
+import sys
 
 def main():
   level = get_level()
@@ -8,18 +9,32 @@ def main():
   
 def get_level():
   while True:
-    level = int(input("Level: "))
+    try: 
+        level = int(input("Level: "))
 
-    # Reprompt if not positive integer
-    if level < 1:
-      continue
-    else:
-      return level
+        # Reprompt if not positive integer
+        if level < 1:
+          continue
+
+        else:
+          return level
+    except ValueError:
+      sys.exit
 
 def random_number(level):
   number = random.randint(1, level)
-  guess = int(input("Guess: "))
 
+  while True:
+    try: 
+        guess = int(input("Guess: "))
+        
+        # Reprompt if not positive integer
+        if guess < 1:
+          continue
+        else:
+          break
+    except ValueError:
+      sys.exit
 
   if guess == number:
     print("Just right!")
