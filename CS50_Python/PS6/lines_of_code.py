@@ -19,14 +19,12 @@ except FileNotFoundError:
     print("File does not exist")
     sys.exit()
 
-
-
 count = 0
 
 for line in lines:
-  if line.startswith(" "):
+  if line.startswith("#"):
     pass
-  elif line.startswith("#"):
+  elif line.isspace():
     pass
   else:
     count += 1
