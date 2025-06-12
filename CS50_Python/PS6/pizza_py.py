@@ -1,3 +1,4 @@
+import csv
 from tabulate import tabulate
 import sys
 
@@ -13,8 +14,11 @@ try:
     print("Not a CSV file")
     sys.exit()
 
-  # Output a table formatted as ASCII art using tabulate
-  print(tabulate(sys.argv[1], headers="firstrow", tablefmt="grid")) 
+  with open(sys.argv[1]) as file:
+    table = csv.reader(file)
+
+    # Output a table formatted as ASCII art using tabulate
+    print(tabulate(table, headers="firstrow", tablefmt="grid")) 
 
 except FileNotFoundError:
     print("File does not exist")
