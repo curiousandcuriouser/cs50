@@ -1,24 +1,25 @@
 def main():
-  percentage = convert(input("Provide a fraction in this format, X / Y: "))
-  print(gauge(percentage))
+  fraction = input("Provide a fraction in this format, X / Y: ")
+  percentage = convert(fraction)
+  print(gauge((percentage)))
 
 def convert(fraction):
-  # Prompt for input: X/Y
+  # Prompt for input: X / Y
   while True:
     try:
-      x, y = input(fraction).split("/")
+      x, y = fraction.split("/")
       if x > y:
         continue
       percentage = round((int(x) / int(y))*100)
-      return percentage
+      return int(percentage)
     except (ValueError, ZeroDivisionError):
       return
 
 def gauge(percentage):
     # Display take gauge:
-    if 1 < percentage < 99:
+    if 1 < int(percentage) < 99:
       return f"{percentage}%"
-    elif percentage <= 1:
+    elif int(percentage) <= 1:
       return "E"
     else:
       return "F"
