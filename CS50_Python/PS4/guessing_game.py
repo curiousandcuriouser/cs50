@@ -19,10 +19,11 @@ def get_level():
         else:
           return level
     except ValueError:
-      sys.exit
+      sys.exit()
 
 def random_number(level):
   number = random.randint(1, level)
+  print(number)
 
   while True:
     try: 
@@ -34,14 +35,14 @@ def random_number(level):
         else:
           break
     except ValueError:
-      sys.exit
+      sys.exit()
 
   if guess == number:
     print("Just right!")
   elif guess > number:
     print("Too large!")
   else:
-    print("Just right!")
+    print("Too small!")
 
 main()
 
