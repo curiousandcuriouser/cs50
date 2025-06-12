@@ -23,7 +23,7 @@ try:
   for sys.argv[1] in sys.argv:
       input = Image.open(sys.argv[1])
       ImageOps.fit(shirt.png, size: [], centering: (0.5, 0.5))
-      Image.paste(im: shirt.png)
+      Image.paste(shirt.png)
       Image.save(sys.argv[2])
 
 except FileNotFoundError:
