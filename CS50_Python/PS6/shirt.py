@@ -14,16 +14,15 @@ try:
   elif not sys.argv[2].endswith(".jpg") or sys.argv[2].endswith(".jpeg") or sys.argv[2].endswith(".png"):
     print("Invalid output")
     sys.exit()
-  elif sys.argv[1].endswith() != sys.argv[2].endswith():
-    print("Input and output have different extensions")
-    sys.exit()
+  #elif sys.argv[1].endswith() != sys.argv[2].endswith():
+  # print("Input and output have different extensions")
+    #sys.exit()
 
   images = []
 
-  for sys.argv[1] in sys.argv:
-      input = Image.open(sys.argv[1])
-      ImageOps.fit(shirt.png, size: [], centering: (0.5, 0.5))
-      Image.paste(shirt.png)
+  with Image.open(sys.argv[1]) as image:
+      ImageOps.fit("shirt.png", image.size)
+      Image.paste("shirt.png")
       Image.save(sys.argv[2])
 
 except FileNotFoundError:
