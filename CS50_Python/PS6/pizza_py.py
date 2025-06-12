@@ -21,4 +21,4 @@ except FileNotFoundError:
     sys.exit()
 
 # Output a table formatted as ASCII art using tabulate
-print()
+print(tabulate(sys.argv[1], headers="firstrow", tablefmt="grid"))
