@@ -7,47 +7,38 @@ def main():
 
 
 def convert(s):
-  if match := re.search(r"(1[0-2]|0?[0-9]):?[0-5][0-9] (?:AM|PM) to (1[0-2]|0?[0-9]):?[0-5][0-9] (?:AM|PM)", s):
-    return f"MATCH: {match}"
+  if match := re.search(r"(1[0-2]|0?[0-9]:?[0-5][0-9] (?:AM|PM)) to (1[0-2]|0?[0-9]:?[0-5][0-9] (?:AM|PM))", s):
+  
+    first = time(match.group(1))
+    last = time(match.group(2))
+    
+    converted_time = first + " to " + last
+    return converted_time
 
-    """
-    first = match.group(1)
-    second = match.group(2)
-
-    converted_first = first
-    for _ in match.group():
-      if "PM" and ":" in match.group(_):
-        hour, minute = first.removesuffix("PM").split(":")
-        hour = hour + 12
-        first = hour + ":" + minute
-        return first
-      
-      elif "PM" in first:
-        hour, minute = first.removesuffix("PM")
-        hour = hour + 12
-        first = hour
-        return first
-      
-      elif "AM" and ":" in first:
-        first = first.removesuffix("AM")
-        return first
-        
-      else:
-        first = first.removesuffix("AM") + ":00"
-        return first 
-    converted_time = converted_first + "to" + converted_second
-    return 
-    """
   else:
-    return ValueError
+    return "ValueError"
       
 
-"""
-# For AM and PM: 
-# Pattern: [0-1][0-9]:?[0-1][0-2][AM | PM]to[0-1][0-2]:?[0-1][0-9][AM | PM]
-
-# For 
-"""
+def time(group):
+  if "PM" and ":" in group:
+    hour, minute = group.removesuffix("PM").split(":")
+    hour = int(hour) + 12
+    group = str(hour) + ":" + minute
+    return group
+  
+  elif "PM" in group:
+    hour = group.removesuffix("PM")
+    hour = int(hour) + 12
+    group = str(hour) + ":00"
+    return group
+  
+  elif "AM" and ":" in group:
+    group = group.removesuffix("AM")
+    return group
+    
+  elif "AM" in group:
+    group = group.removesuffix("AM") + ":00"
+    return group 
 
 if __name__ == "__main__":
     main()
