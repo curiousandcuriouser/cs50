@@ -10,3 +10,6 @@ def test_error():
   assert "9:60 AM to 5:60 PM" == ValueError
   assert "9 AM - 5 PM" == ValueError
   assert "09:00 AM - 17:00 PM" == ValueError
+
+def test_error_purpose():
+  assert "9:59 AM to 5:59 PM" == "MATCH: 9:59 AM to 5:59 PM"
