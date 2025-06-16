@@ -1,2 +1,6 @@
 /tests/__pycache__
 /tests/.pytest_cache
+/tests/__init__.py
+/__init__.py
+/__pycache__
+/.pytest_cache
